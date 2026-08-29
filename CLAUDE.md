@@ -1024,7 +1024,20 @@ sync code walk for them requires an explicit `--allow-reclone` opt-in.
 
 ## gstack
 
-gstack is installed at `~/.claude/skills/gstack`. Update it anytime with `/gstack-upgrade`.
+This project uses [gstack](https://github.com/garrytan/gstack) for AI-assisted
+workflows. Every developer installs it once, globally — it is not vendored into
+this repo.
+
+```bash
+git clone --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack
+cd ~/.claude/skills/gstack && ./setup --team
+```
+
+`--team` registers a SessionStart hook, so gstack auto-updates at the start of
+each Claude Code session. Restart your AI coding tool after installing. You can
+also update on demand with `/gstack-upgrade`.
+
+Use `~/.claude/skills/gstack/...` for gstack file paths.
 
 ### Web browsing
 
