@@ -1050,40 +1050,108 @@ not what this project uses. `/browse` is the only supported browser surface.
 
 ### Available skills
 
+All 53 skills below are installed and callable. `/gstack` is a router that picks
+one for you when you are not sure which fits.
+
+**Plan and review**
+
 | Skill | What it does |
 |-------|--------------|
 | `/office-hours` | YC-style startup diagnostic + builder brainstorm |
+| `/spec` | Turn vague intent into an executable spec in five phases |
 | `/plan-ceo-review` | CEO/founder-mode plan review (strategy, scope) |
 | `/plan-eng-review` | Eng manager-mode plan review (architecture) |
 | `/plan-design-review` | Designer's eye plan review |
 | `/plan-devex-review` | Developer experience plan review |
 | `/autoplan` | Full auto-review pipeline: CEO → design → eng → DX |
+| `/plan-tune` | Self-tuning question sensitivity for planning skills |
+
+**Design**
+
+| Skill | What it does |
+|-------|--------------|
 | `/design-consultation` | Build a design system from scratch |
 | `/design-shotgun` | Generate and compare visual design variants |
 | `/design-html` | Production-quality HTML/CSS from a design |
 | `/design-review` | Visual QA audit + fix loop |
-| `/devex-review` | Live developer experience audit |
+
+**Code review and quality**
+
+| Skill | What it does |
+|-------|--------------|
 | `/review` | Pre-landing PR / diff review |
+| `/health` | Code quality dashboard |
+| `/investigate` | Systematic root-cause debugging |
+| `/cso` | Security audit (OWASP Top 10 + STRIDE) |
+| `/codex` | Second opinion via the OpenAI Codex CLI |
+| `/devex-review` | Live developer experience audit |
+| `/benchmark` | Performance regression detection |
+| `/benchmark-models` | Cross-model benchmark for gstack skills |
+
+**Ship and deploy**
+
+| Skill | What it does |
+|-------|--------------|
 | `/ship` | Merge base, test, review, bump VERSION, CHANGELOG, PR |
 | `/land-and-deploy` | Merge → deploy → canary verify |
+| `/landing-report` | Read-only queue dashboard for workspace-aware ship |
 | `/canary` | Post-deploy monitoring loop |
-| `/benchmark` | Performance regression detection |
+| `/setup-deploy` | One-time deploy configuration |
+
+**Browser and QA**
+
+| Skill | What it does |
+|-------|--------------|
 | `/browse` | Headless browser CLI (use this for all web browsing) |
-| `/connect-chrome` | Launch GStack Browser (Chromium + sidebar extension) |
+| `/open-gstack-browser` | Launch GStack Browser (Chromium + sidebar extension). Also aliased as `/connect-chrome` |
 | `/qa` | Systematically QA a web app and fix what breaks |
 | `/qa-only` | Report-only QA (finds issues, makes no fixes) |
+| `/scrape` | Pull structured data from a web page |
+| `/skillify` | Turn a successful `/scrape` run into a saved browser-skill |
 | `/setup-browser-cookies` | Import real browser cookies into the browse session |
-| `/setup-deploy` | One-time deploy configuration |
-| `/setup-gbrain` | Set up gbrain semantic code search |
-| `/retro` | Engineering retrospective |
-| `/investigate` | Systematic root-cause debugging |
+| `/pair-agent` | Pair a remote AI agent with your browser |
+
+**iOS**
+
+| Skill | What it does |
+|-------|--------------|
+| `/ios-qa` | Live-device QA for SwiftUI apps |
+| `/ios-fix` | Autonomous iOS bug fixer |
+| `/ios-design-review` | Visual design audit on real hardware |
+| `/ios-sync` | Regenerate the iOS debug bridge from upstream templates |
+| `/ios-clean` | Strip the DebugBridge package and `#if DEBUG` wiring |
+
+**Docs and artifacts**
+
+| Skill | What it does |
+|-------|--------------|
 | `/document-release` | Post-ship documentation update |
 | `/document-generate` | Generate missing docs (Diataxis structure) |
-| `/codex` | Second opinion via the OpenAI Codex CLI |
-| `/cso` | Security audit (OWASP Top 10 + STRIDE) |
+| `/make-pdf` | Turn a markdown file into a publication-quality PDF |
+| `/diagram` | English or mermaid → editable `.excalidraw` + SVG + PNG |
+
+**Context and memory**
+
+| Skill | What it does |
+|-------|--------------|
+| `/context-save` | Save working context before you stop |
+| `/context-restore` | Restore context saved by `/context-save` |
+| `/learn` | Manage project learnings |
+| `/retro` | Engineering retrospective |
+| `/setup-gbrain` | Set up gbrain semantic code search |
+| `/sync-gbrain` | Re-index this repo in gbrain after code changes |
+
+**Safety**
+
+| Skill | What it does |
+|-------|--------------|
 | `/careful` | Destructive-command guardrails |
 | `/freeze` | Restrict edits to one directory for the session |
 | `/guard` | Full safety mode (careful + freeze) |
 | `/unfreeze` | Clear the freeze boundary |
+
+**Maintenance**
+
+| Skill | What it does |
+|-------|--------------|
 | `/gstack-upgrade` | Upgrade gstack to the latest version |
-| `/learn` | Manage project learnings |
