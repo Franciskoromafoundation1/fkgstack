@@ -1021,3 +1021,56 @@ add --path <dir>` (no `--url`): URL-managed sources can auto-reclone, and the
 sync code walk for them requires an explicit `--allow-reclone` opt-in.
 
 <!-- gstack-gbrain-search-guidance:end -->
+
+## gstack
+
+gstack is installed at `~/.claude/skills/gstack`. Update it anytime with `/gstack-upgrade`.
+
+### Web browsing
+
+Use the **`/browse` skill from gstack for all web browsing** — page loads, QA
+testing, dogfooding, scraping, cookie setup, screenshots. Run the binary
+directly with `$B <command>` when you already know the command you need.
+
+**NEVER use `mcp__claude-in-chrome__*` tools.** They are slow, unreliable, and
+not what this project uses. `/browse` is the only supported browser surface.
+
+### Available skills
+
+| Skill | What it does |
+|-------|--------------|
+| `/office-hours` | YC-style startup diagnostic + builder brainstorm |
+| `/plan-ceo-review` | CEO/founder-mode plan review (strategy, scope) |
+| `/plan-eng-review` | Eng manager-mode plan review (architecture) |
+| `/plan-design-review` | Designer's eye plan review |
+| `/plan-devex-review` | Developer experience plan review |
+| `/autoplan` | Full auto-review pipeline: CEO → design → eng → DX |
+| `/design-consultation` | Build a design system from scratch |
+| `/design-shotgun` | Generate and compare visual design variants |
+| `/design-html` | Production-quality HTML/CSS from a design |
+| `/design-review` | Visual QA audit + fix loop |
+| `/devex-review` | Live developer experience audit |
+| `/review` | Pre-landing PR / diff review |
+| `/ship` | Merge base, test, review, bump VERSION, CHANGELOG, PR |
+| `/land-and-deploy` | Merge → deploy → canary verify |
+| `/canary` | Post-deploy monitoring loop |
+| `/benchmark` | Performance regression detection |
+| `/browse` | Headless browser CLI (use this for all web browsing) |
+| `/connect-chrome` | Launch GStack Browser (Chromium + sidebar extension) |
+| `/qa` | Systematically QA a web app and fix what breaks |
+| `/qa-only` | Report-only QA (finds issues, makes no fixes) |
+| `/setup-browser-cookies` | Import real browser cookies into the browse session |
+| `/setup-deploy` | One-time deploy configuration |
+| `/setup-gbrain` | Set up gbrain semantic code search |
+| `/retro` | Engineering retrospective |
+| `/investigate` | Systematic root-cause debugging |
+| `/document-release` | Post-ship documentation update |
+| `/document-generate` | Generate missing docs (Diataxis structure) |
+| `/codex` | Second opinion via the OpenAI Codex CLI |
+| `/cso` | Security audit (OWASP Top 10 + STRIDE) |
+| `/careful` | Destructive-command guardrails |
+| `/freeze` | Restrict edits to one directory for the session |
+| `/guard` | Full safety mode (careful + freeze) |
+| `/unfreeze` | Clear the freeze boundary |
+| `/gstack-upgrade` | Upgrade gstack to the latest version |
+| `/learn` | Manage project learnings |
