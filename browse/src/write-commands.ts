@@ -1184,6 +1184,8 @@ export async function handleWriteCommand(
 
       if (url.startsWith('blob:')) {
         // Strategy 3: Blob URL -- in-page fetch + base64
+        // Validate the blob URL to ensure it's properly formatted
+        await validateNavigationUrl(url);
         const dataUrl = await page.evaluate(async (blobUrl) => {
           try {
             const resp = await fetch(blobUrl);

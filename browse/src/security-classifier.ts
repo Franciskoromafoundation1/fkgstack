@@ -135,8 +135,28 @@ export function getClassifierStatus(): ClassifierStatus {
 
 // ─── Model download + staging ────────────────────────────────
 
+function buildValidatedUrl(baseUrl: string): string {
+  try {
+    const url = new URL(baseUrl);
+    
+    const allowedDomains = ['huggingface.co'];
+    if (!allowedDomains.includes(url.hostname)) {
+      throw new Error('Invalid host');
+    }
+    
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      throw new Error('Invalid protocol');
+    }
+    
+    return url.href;
+  } catch {
+    throw new Error('Invalid URL');
+  }
+}
+
 export async function downloadFile(url: string, dest: string): Promise<void> {
-  const res = await fetch(url);
+  const validatedUrl = buildValidatedUrl(url);
+  const res = await fetch(validatedUrl);
   if (!res.ok || !res.body) {
     throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
   }

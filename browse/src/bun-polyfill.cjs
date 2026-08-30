@@ -13,13 +13,34 @@
 const http = require('http');
 const { spawnSync, spawn } = require('child_process');
 
+function buildValidatedUrl(baseUrl, requestUrl) {
+  try {
+    // Minimal path validation
+    if (requestUrl.includes('/../') || /\/%2e%2e\//i.test(requestUrl)) {
+      throw new Error('Invalid path');
+    }
+    
+    const url = new URL(baseUrl);
+    const parsedRequestUrl = new URL(requestUrl, baseUrl);
+    
+    // Use the validated path and search params from the parsed request URL
+    url.pathname = parsedRequestUrl.pathname;
+    url.search = parsedRequestUrl.search;
+    
+    return url.href;
+  } catch {
+    throw new Error('Invalid URL');
+  }
+}
+
 globalThis.Bun = {
   serve(options) {
     const { port, hostname = '127.0.0.1', fetch } = options;
 
     const server = http.createServer(async (nodeReq, nodeRes) => {
       try {
-        const url = `http://${hostname}:${port}${nodeReq.url}`;
+        const baseUrl = `http://${hostname}:${port}`;
+        const url = buildValidatedUrl(baseUrl, nodeReq.url);
         const headers = new Headers();
         for (const [key, val] of Object.entries(nodeReq.headers)) {
           if (val) headers.set(key, Array.isArray(val) ? val[0] : val);
